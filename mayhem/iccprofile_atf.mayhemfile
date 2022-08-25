@@ -1,0 +1,4 @@
+project: PROJECT
+target: iccprofile_atf
+cmds:
+- cmd: /out/iccprofile_atf
