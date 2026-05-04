@@ -20,7 +20,7 @@ FROM gcr.io/oss-fuzz-base/base-builder
 COPY . skcms
 RUN rm -rf skcms/mayhem
 
-RUN wget -O $SRC/skcms/iccprofile_seed_corpus.zip https://storage.googleapis.com/skia-fuzzer/oss-fuzz/iccprofile_seed_corpus.zip
+RUN wget -O $SRC/skcms/iccprofile_seed_corpus.zip https://storage.googleapis.com/skia-fuzzer/oss-fuzz/iccprofile_seed_corpus.zip || true
 
 # current directory for build script
 WORKDIR skcms
