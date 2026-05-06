@@ -193,7 +193,8 @@ SI U16 Half_from_F(F f) {
 #elif defined(USING_AVX512F)
     return (U16)_mm512_cvtps_ph((__m512 )f, _MM_FROUND_CUR_DIRECTION );
 #elif defined(USING_AVX_F16C)
-    return (U16)(F)_mm256_cvtps_ph((__m256)f, _MM_FROUND_CUR_DIRECTION);
+    __m128i half_ret = _mm256_cvtps_ph((__m256)f, _MM_FROUND_CUR_DIRECTION);
+    return (U16)half_ret;
 #else
     // A float is 1-8-23 sign-exponent-mantissa, with 127 exponent bias.
     U32 sem = bit_pun<U32>(f),
